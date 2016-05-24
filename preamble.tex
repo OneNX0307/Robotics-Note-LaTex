@@ -1,0 +1,104 @@
+%preamble.tex
+\usepackage[left=1.5in,right=1.5in,top=1in,bottom=1in]{geometry} %页边距
+\renewcommand{\baselinestretch}{1.25}
+\usepackage{indentfirst}
+	\setlength{\parindent}{2em}
+\usepackage{amsmath}
+\usepackage{bm}
+\setlength{\parskip}{1em}%段间距
+\renewcommand{\contentsname}{目 \quad 录}
+\renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
+\usepackage{graphicx}%插图
+\usepackage{xeCJK}
+\usepackage{fontspec}
+%----------------字体-------------------------
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setCJKmainfont[BoldFont=simhei.ttf,ItalicFont=simkai.ttf]{simsun.ttf}
+
+
+%---------页眉页脚--------------------------
+%\usepackage{fancyhdr}%页眉页脚
+%    \pagestyle{fancy}
+%    \fancyhf{}
+%    \fancyhead[ER]{leftmark}%偶数页右页眉
+%    \fancyhead[OL]{rightmark}%奇数页左页眉
+%    \fancyhead[EL,OR]{$\cdot$\ \thepage\ $\cdot$}%偶数页的左页脚，奇数页的右页脚
+%    \renewcommand{\headrulewidth}{0.4pt}%页眉线宽度
+
+%------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % 清空当前的页眉页脚
+\fancyfoot[C]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+%-------------章节格式--------------------------
+\usepackage{titlesec}%设置章节格式
+    \titleformat{\chapter}{\centering\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+    \renewcommand{\sectionmark}[1]{\markright{\small\thesection\quad #1}{}}
+    %以上两个重定义语句一定要放在\pagestyle{fancy}之后，因为在 fancyhdr 宏包中对这两个命令重新进行了定义，在 \pagestyle{fancy} 之后重定义它们就可将 fancyhdr 中的相应命令覆盖掉。
+
+\usepackage{titletoc}%调整章节标题在目录页中的格式
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}%参考文献在右上角
+\newcommand{\zsb}[2]{{}^{#2}{\bm{#1}}}
+\newcommand{\zb}[3]{{}^{#2}_{#3}{\bm{#1}}}
+\newcommand{\djb}[3]{{}^{#2}{\bm{#1}}_{#3}}
+\newcommand{\rotx}{\begin{equation}
+\bm{R}(x,\theta)=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & c\theta & -s\theta\\
+0 & s\theta & c\theta
+\end{bmatrix}
+\end{equation}}
+
+\newcommand{\roty}{\begin{equation}
+\bm{R}(y,\theta)=
+\begin{bmatrix}
+c\theta & 0 & s\theta\\
+0 & 1 & 0\\
+-s\theta & 0 & c\theta
+\end{bmatrix}
+\end{equation}}
+\newcommand{\rotz}{\begin{equation}
+\bm{R}(z,\theta)=
+\begin{bmatrix}
+c\theta & -s\theta & 0\\
+s\theta & c\theta & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}}
+\newcommand{\Rotx}{\begin{equation}
+\bm{Rot}(x,\theta)=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & c\theta & -s\theta & 0\\
+0 & s\theta & c\theta & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}}
+
+\newcommand{\Roty}{\begin{equation}
+\bm{Rot}(y,\theta)=
+\begin{bmatrix}
+c\theta & 0 & s\theta & 0\\
+0 & 1 & 0 & 0\\
+-s\theta & 0 & c\theta 0\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{equation}}
+ 
+\newcommand{\Rotz}{\begin{equation}
+\bm{Rot}(z,\theta)=
+\begin{bmatrix}
+c\theta & -s\theta & 0 & 0\\
+s\theta & c\theta & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}}

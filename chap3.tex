@@ -1,0 +1,50 @@
+%chap3.tex
+%机器人运动学
+\chapter{机器人运动学}
+\section{机器人运动方程的表示}
+\subsection{机械手的运动姿态和方向表示}
+\subsubsection{机械手的运动方向}
+\begin{equation}
+\T_6=
+\begin{bmatrix}
+n_x & o_x & a_x & p_x\\
+n_y & o_y & a_y & p_yz\\
+n_z & o_z & a_z & p_z\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+\subsubsection{用欧拉变换表示运动姿态}
+\begin{equation}
+Euler(\phi, \theta, \psi)=Rot(z, \phi)Rot(y, \theta)Rot(z, \psi)
+\end{equation}
+\subsubsection{用PRY组合变换表示运动姿态}
+\begin{equation}
+RPY(\phi, \theta, \psi)=Rot(z, \phi)Rot(y, \theta)Rot(z, \psi)
+\end{equation}
+\begin{center}
+\begin{description}
+\item[R] rool（横流）
+\item[P] pitch（俯仰）
+\item[Y] yaw（偏转）
+\end{description}
+\end{center}
+\section{平移变换的不同坐标表示}
+一旦机械手的运动姿态由某个姿态变换规定之后，它在基系中的位置就能够由左乘一个对英语矢量$\bm{p}$的变换来确定。
+\begin{equation}
+T_0=
+\begin{bmatrix}
+1 & 0 & 0 & p_x\\
+0 & 1 & 0 & p_y\\
+0 & 0 & 1 & p_z\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+[\text{某姿态变换}]
+\end{equation}
+\subsubsection{用柱面坐标表示运动位置}
+\begin{equation}
+Cyl(z, \alpha, \gamma)=Trans(0, 0, z)Rot(z, \alpha)Trans(r, 0, 0)
+\end{equation}
+\subsubsection{用球面坐标表示运动位置}
+\begin{equation}
+Sph(\alpha, \beta, \gamma)=Rot(z, \alpha)Rot(y, \beta)Trans(0, 0, \gamma)
+\end{equation}
