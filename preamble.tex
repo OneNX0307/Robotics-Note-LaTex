@@ -1,104 +1,106 @@
 %preamble.tex
-\usepackage[left=1.5in,right=1.5in,top=1in,bottom=1in]{geometry} %页边距
-\renewcommand{\baselinestretch}{1.25}
+%-----------------------------------------------------%
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\linespread{1.25}\selectfont
 \usepackage{indentfirst}
 	\setlength{\parindent}{2em}
-\usepackage{amsmath}
-\usepackage{bm}
-\setlength{\parskip}{1em}%段间距
-\renewcommand{\contentsname}{目 \quad 录}
-\renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
-\usepackage{graphicx}%插图
-\usepackage{xeCJK}
-\usepackage{fontspec}
-%----------------字体-------------------------
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setCJKmainfont[BoldFont=simhei.ttf,ItalicFont=simkai.ttf]{simsun.ttf}
+\setlength{\parskip}{1em}
+\usepackage[left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm]{geometry}
+%----------------------代码-------------------------%
+\usepackage{listings}
+	\lstset{
+			%行号
+			numbers=left,
+			%背景框
+			framexleftmargin=10mm,
+			frame=none,
+			%背景色
+			%backgroundcolor=\color[rgb]{1,1,0.76},
+			backgroundcolor=\color[RGB]{245,245,244},
+			%样式
+			keywordstyle=\bf\color{blue},
+			identifierstyle=\bf,
+			numberstyle=\color[RGB]{0,192,192},
+			commentstyle=\it\color[RGB]{0,96,96},
+			stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+			%显示空格
+			showstringspaces=false}
+%--------------------------------------------------%
 
-
-%---------页眉页脚--------------------------
-%\usepackage{fancyhdr}%页眉页脚
-%    \pagestyle{fancy}
-%    \fancyhf{}
-%    \fancyhead[ER]{leftmark}%偶数页右页眉
-%    \fancyhead[OL]{rightmark}%奇数页左页眉
-%    \fancyhead[EL,OR]{$\cdot$\ \thepage\ $\cdot$}%偶数页的左页脚，奇数页的右页脚
-%    \renewcommand{\headrulewidth}{0.4pt}%页眉线宽度
-
-%------------------------------------------
+%--------------------------页眉页脚-------------------------------%
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\fancyhf{} % 清空当前的页眉页脚
-\fancyfoot[C]{\bfseries\thepage}
-\fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-%-------------章节格式--------------------------
-\usepackage{titlesec}%设置章节格式
+	\pagestyle{fancy}
+	\fancyhead{}
+  \fancyhead[RO]{\leftmark}
+  \fancyhead[LE]{\rightmark}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\qquad #1}{}}
+%----------------------------------------------------------------%
+\renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
+\renewcommand{\contentsname}{目 \quad 录}
+\usepackage{titlesec}
     \titleformat{\chapter}{\centering\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
-    \renewcommand{\sectionmark}[1]{\markright{\small\thesection\quad #1}{}}
-    %以上两个重定义语句一定要放在\pagestyle{fancy}之后，因为在 fancyhdr 宏包中对这两个命令重新进行了定义，在 \pagestyle{fancy} 之后重定义它们就可将 fancyhdr 中的相应命令覆盖掉。
-
-\usepackage{titletoc}%调整章节标题在目录页中的格式
+%---------------汉化参考文献--------------------%
+%\renewcommand{\abstractname}{摘 \quad 要}  %如果是article类用\refname;如果是book类用\bibname
+%\renewcommand{\refname}{参考文献}
+%\renewcommand{\bibname}{参考文献}
+%----------------中英文摘要---------------------%
+\newcommand{\enabstractname}{Abstract}
+\newcommand{\cnabstractname}{摘要}
+\newenvironment{enabstract}{%英文摘要
+	\par\small
+    \noindent\mbox{}\hfill{\bfseries \enabstractname}\hfill\mbox{}\par
+    \vskip 2.5ex}{\par\vskip 2.5ex}
+\newenvironment{cnabstract}{%中文摘要
+    \par\small
+    \noindent\mbox{}\hfill{\bfseries \cnabstractname}\hfill\mbox{}\par
+    \vskip 2.5ex}{\par\vskip 2.5ex}
+%---------------------------------------------%
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}%参考文献在右上角
-\newcommand{\zsb}[2]{{}^{#2}{\bm{#1}}}
-\newcommand{\zb}[3]{{}^{#2}_{#3}{\bm{#1}}}
-\newcommand{\djb}[3]{{}^{#2}{\bm{#1}}_{#3}}
-\newcommand{\rotx}{\begin{equation}
-\bm{R}(x,\theta)=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & c\theta & -s\theta\\
-0 & s\theta & c\theta
-\end{bmatrix}
-\end{equation}}
-
-\newcommand{\roty}{\begin{equation}
-\bm{R}(y,\theta)=
-\begin{bmatrix}
-c\theta & 0 & s\theta\\
-0 & 1 & 0\\
--s\theta & 0 & c\theta
-\end{bmatrix}
-\end{equation}}
-\newcommand{\rotz}{\begin{equation}
-\bm{R}(z,\theta)=
-\begin{bmatrix}
-c\theta & -s\theta & 0\\
-s\theta & c\theta & 0\\
-0 & 0 & 1
-\end{bmatrix}
-\end{equation}}
-\newcommand{\Rotx}{\begin{equation}
-\bm{Rot}(x,\theta)=
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & c\theta & -s\theta & 0\\
-0 & s\theta & c\theta & 0\\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\end{equation}}
-
-\newcommand{\Roty}{\begin{equation}
-\bm{Rot}(y,\theta)=
-\begin{bmatrix}
-c\theta & 0 & s\theta & 0\\
-0 & 1 & 0 & 0\\
--s\theta & 0 & c\theta 0\\
-0 & 0 & 0 & 1\\
-\end{bmatrix}
-\end{equation}}
- 
-\newcommand{\Rotz}{\begin{equation}
-\bm{Rot}(z,\theta)=
-\begin{bmatrix}
-c\theta & -s\theta & 0 & 0\\
-s\theta & c\theta & 0 & 0\\
-0 & 0 & 1 & 0\\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\end{equation}}
+\bibliographystyle{plain}
+%------------汉化图表标题--------%
+\usepackage{caption}
+\renewcommand\figurename{\hei 图}
+\renewcommand\tablename{\hei 表}
+%-----------自动生成书签------------%
+\usepackage[bookmarks=true]{hyperref}
+%----------------------------------------字体---------------------------------%
+\usepackage{fontspec,xunicode,xltxtra}
+\newfontfamily\youyuan{YouYuan}
+\newfontfamily\hwcaiyun{STCaiyun}
+\newfontfamily\hwhupo{STHupo}
+\newfontfamily\yaoti{FZYaoTi}
+\newfontfamily\kaiti{KaiTi_GB2312}
+\newfontfamily\xsong{NSimSun}
+\newfontfamily\hwsong{STSong}
+\newfontfamily\yahei{Microsoft YaHei}
+\newfontfamily\songti{SimSun}
+\newfontfamily\hwfangsong{STFangsong}
+\newfontfamily\weiti{STXinwei}
+\newfontfamily\heiti{SimHei}
+\newfontfamily\hwxingkai{STXingkai}
+\newfontfamily\hwlishu{STLiti}
+\newfontfamily\zhongsong{STZhongsong}
+\newfontfamily\shuti{FZShuTi}
+\newfontfamily\hwhei{STXihei}
+\newfontfamily\lishu{LiSu}
+\newfontfamily\hwkai{STKaiti}
+\renewcommand{\baselinestretch}{1.25}
+%--------------------------------------字号---------------------------------%
+\usepackage{fontspec,xunicode,xltxtra}
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}     %初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} %小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}      %一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}      %二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}  %小二号
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}  %三号
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}      %四号
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  %小四号
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    %五号
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   %小五号
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  %六号
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    %七号

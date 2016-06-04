@@ -1,13 +1,74 @@
-\documentclass[a4paper]{book}
+\documentclass[a4paper,12pt,twoside]{book}
 \input{preamble}
-\title{机器人学笔记}
-\author{邢亚飞}
+\usepackage{bm}
+%------------------定义数学命令-------------------%
+\newcommand{\zsb}[2]{{}^{#2}{\bm{#1}}}
+\newcommand{\zb}[3]{{}^{#2}_{#3}{\bm{#1}}}
+\newcommand{\djb}[3]{{}^{#2}{\bm{#1}}_{#3}}
+\newcommand{\rotx}{\begin{equation}
+\bm{R}(x,\theta)=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & c\theta & -s\theta\\
+0 & s\theta & c\theta
+\end{bmatrix}
+\end{equation}}
+
+\newcommand{\roty}{\begin{equation}
+\bm{R}(y,\theta)=
+\begin{bmatrix}
+c\theta & 0 & s\theta\\
+0 & 1 & 0\\
+-s\theta & 0 & c\theta
+\end{bmatrix}
+\end{equation}}
+\newcommand{\rotz}{\begin{equation}
+\bm{R}(z,\theta)=
+\begin{bmatrix}
+c\theta & -s\theta & 0\\
+s\theta & c\theta & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}}
+\newcommand{\Rotx}{\begin{equation}
+\bm{Rot}(x,\theta)=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & c\theta & -s\theta & 0\\
+0 & s\theta & c\theta & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}}
+
+\newcommand{\Roty}{\begin{equation}
+\bm{Rot}(y,\theta)=
+\begin{bmatrix}
+c\theta & 0 & s\theta & 0\\
+0 & 1 & 0 & 0\\
+-s\theta & 0 & c\theta 0\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+\end{equation}}
+
+\newcommand{\Rotz}{\begin{equation}
+\bm{Rot}(z,\theta)=
+\begin{bmatrix}
+c\theta & -s\theta & 0 & 0\\
+s\theta & c\theta & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}}
+%------------------------标题页------------------------%
+\title{机器人基础}
+\author{邢亚飞\thanks{Email:xingyafei0801@hotmail.com}}
 \date{\today}
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 \tableofcontents
+\thispagestyle{empty}
 \include{chap1}
 \include{chap2}
 \include{chap3}
-\include{chap4}
 \end{document}
